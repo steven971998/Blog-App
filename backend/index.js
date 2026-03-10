@@ -13,8 +13,10 @@ dotenv.config()
 app.use(express.json())
 app.use('/images', express.static(path.join(__dirname,"/images")))
 
+const mongoConnectionString = process.env.MONGO_URL;
 //To connect to MongoDB Atlas:
-mongoose.connect('mongodb+srv://steven:steven123@cluster0.lhfxqbm.mongodb.net/blog?retryWrites=true&w=majority',{
+
+mongoose.connect(mongoConnectionString,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }).then(()=>{
